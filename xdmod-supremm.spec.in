@@ -33,6 +33,9 @@ DESTDIR=$RPM_BUILD_ROOT ./install \
     --docdir=%{_docdir}/%{name}-%{version}__PRERELEASE__ \
     --crondconfdir=%{_sysconfdir}/cron.d
 
+ln -sf %{_datadir}/xdmod/etl/js/config/supremm/dataset_maps/pcp.js \
+	%{_datadir}/xdmod/etl/js/config/supremm/dataset_maps/supremm.js
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 

@@ -1,9 +1,9 @@
 {
     "resources": [
         {
-            "resource": "pcp",
+            "resource": "example_resource",
             "resource_id": 1,
-            "datasetmap": "pcp",
+            "datasetmap": "supremm",
             "hardware": {
                 "gpfs": "gpfs0",
                 "network": [
