@@ -16,6 +16,7 @@ jobs:
         type: string
     executor: << parameters.os >>
     environment:
+      TEST_ENV_VARIABLE: "this is a test"
       COMPOSER_ALLOW_SUPERUSER: 1
       XDMOD_REALMS: 'jobs,storage,cloud,supremm,jobefficiency'
       XDMOD_IS_CORE: 'yes'
