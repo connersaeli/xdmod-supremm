@@ -199,6 +199,10 @@ This setting is ignored if the <code>hostname_mode</code> is set to <code>hostna
 <tr>
 <td><code>prom_password</code></td><td>[password]</td><td>Password for basic authentication to the Prometheus server.</td>
 </tr>
+<td><code>plugin_whitelist</code></td><td>[list of plugin names]</td><td>List of enabled preprocessors and plugins. All are enabled if not specified.</td>
+</tr>
+<td><code>plugin_blacklist</code></td><td>[list of plugin names]</td><td>List of disabled preprocessors and plugins.
+This option is ignored if <code>plugin_whitelist</code> is also set.</td>
 <tr>
 <td><code>batchscript.path</code></td><td>[filesystem path]</td><td>Path to the batch script files. The batch scripts must be stored following
 the naming convention described in the <a href="supremm-jobscript.html">job script documentation</a>. Set this to an empty string if the
