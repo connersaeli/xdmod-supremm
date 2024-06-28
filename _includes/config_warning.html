@@ -1,0 +1,22 @@
+<div class="patch-info">
+<h2><img src="../assets/images/exclamation_ak.png" alt="" /> Warning</h2>
+<p>
+There is a known issue with version 2.0.0 of the summarization software when configuring resources with PCP.
+</p>
+<p>
+Be sure to add the following line to the resource configuration to ensure job-level CPU information is processed properly.
+```sh
+"plugin_blacklist": ["ProcPrometheus"]
+```
+</p>
+
+<h4>RPM installs</h4>
+<ul>
+	<li>Default config location: <code>/etc/supremm/config.json</code></li>
+</ul>
+
+<h4>Source code installs</h4>
+<ul>
+    <li>Default config location: <code>$INSTALL_PREFIX/lib/python3.6/site-packages/supremm-2.0.0-py3.6-linux-x86_64.egg/etc/supremm/config.json</code></li>
+</ul>
+</div>
