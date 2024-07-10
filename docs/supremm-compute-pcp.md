@@ -1,5 +1,15 @@
 **These instructions only apply to resources that will use PCP software. Configuration instructions for Prometheus are [here](supremm-compute-prometheus.html).**
 
+> ##### WARNING
+>
+> There is a known issue with version 2.0.0 of the summarization software when configuring resources with PCP.
+> Be sure to add the following line to the resource configuration to ensure job-level CPU information is processed properly.
+> The configuration file should be at `/etc/supremm/config.json` by default for RPM installations."
+```sh
+"plugin_blacklist": ["ProcPrometheus"]
+```
+{: .block-warning}
+
 This section gives example configuration settings for Performance Co-Pilot (PCP) running on the compute nodes
 of an HPC cluster. These configuration guidelines are based on the PCP data collection setup
 at CCR Buffalo, which uses PCP version 4.3.2 that is supplied with Centos 7.
