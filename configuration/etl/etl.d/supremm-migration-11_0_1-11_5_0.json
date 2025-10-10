@@ -1,0 +1,113 @@
+{
+    "module": "supremm",
+    "defaults": {
+        "migration-11_0_1-11_5_0": {
+            "namespace": "ETL\\Maintenance",
+            "options_class": "MaintenanceOptions",
+            "endpoints": {
+              "source": {
+                  "type": "mysql",
+                  "name": "SUPReMM DB",
+                  "config": "datawarehouse",
+                  "schema": "modw_supremm"
+              },
+              "destination": {
+                  "type": "mysql",
+                  "name": "SUPReMM DB",
+                  "config": "datawarehouse",
+                  "schema": "modw_supremm"
+              }
+           }
+        }
+    },
+    "migration-11_0_1-11_5_0": [
+        {
+            "name": "update-supremm-tables-to-innodb",
+            "description": "Update modw_supremm tables to InnoDB",
+            "class": "ManageTables",
+            "definition_file_list": [
+                "supremm/jobhost.json"
+            ],
+            "endpoints": {
+                "destination": {
+                    "type": "mysql",
+                    "name": "XDMoD Data Warehouse",
+                    "config": "datawarehouse",
+                    "schema": "modw_supremm"
+                }
+            }
+        },
+        {
+            "name": "convert-modw-supremm-tables-to-innodb",
+            "description": "Convert modw_supremm tables to InnoDB",
+            "class": "ExecuteSql",
+            "sql_file_list": [
+                {
+                    "delimiter": ";",
+                    "sql_file": "migrations/11.0.1-11.5.0/modw_supremm/convert_to_innodb.sql"
+                }
+            ],
+            "endpoints": {
+                "destination": {
+                    "type": "mysql",
+                    "name": "XDMoD Data Warehouse",
+                    "config": "datawarehouse",
+                    "schema": "modw_supremm"
+                }
+            }
+        },
+        {
+            "name": "convert-supremm-aggregate-fact-tables-to-innodb",
+            "description": "Convert supremm aggregate fact tables to InnoDB",
+            "class": "ExecuteSql",
+            "sql_file_list": [
+                {
+                    "delimiter": ";",
+                    "sql_file": "migrations/11.0.1-11.5.0/modw_aggregates/convert_to_innodb.sql"
+                }
+            ],
+            "endpoints": {
+                "destination": {
+                    "type": "mysql",
+                    "name": "XDMoD Data Warehouse",
+                    "config": "datawarehouse",
+                    "schema": "modw_aggregates"
+                }
+            }
+        },
+	{
+	    "name": "update-jobefficiency-aggregate-tables-by-year",
+	    "description": "Update modw_aggregates jobefficiency by year table to use InnoDB table engine",
+	    "class": "ManageAggregateTables",
+	    "aggregation_units": ["year"],
+	    "definition_file_list": [
+	        "jobefficiency/jobefficiency_by.json"
+	    ],
+	    "endpoints": {
+	        "destination": {
+		    "type": "mysql",
+		    "name": "XDMoD Data Warehouse",
+		    "config": "datawarehouse",
+		    "schema": "modw_aggregates"
+		}
+	    }
+	},
+	{
+	    "name": "update-jobefficiency-aggregate-tables-by-day",
+	    "description": "Update modw_aggregates jobefficiency by day tables to use InnoDB table engine",
+	    "class": "ManageAggregateTables",
+	    "aggregation_units": ["day"],
+	    "definition_file_list": [
+	        "jobefficiency/jobefficiency_by_day.json"
+	    ],
+	    "endpoints": {
+	        "destination": {
+		    "type": "mysql",
+		    "name": "XDMoD Data Warehouse",
+		    "config": "datawarehouse",
+		    "schema": "modw_aggregates"
+		}
+	    }
+	}
+    ]
+}
