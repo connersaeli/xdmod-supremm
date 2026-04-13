@@ -265,6 +265,7 @@ external_libraries/
 
 # Custom PHPUnit configuration files.
 /open_xdmod/modules/*/tests/phpunit.xml
+.phpunit.result.cache
 
 # Security
 *.pem
@@ -280,8 +281,18 @@ configuration/rawstatistics.d/10_supremm.json
 configuration/roles.d/supremm.json
 configuration/supremmconfig.json
 configuration/aggregation_meta/
-configuratuon/datawarehouse.d/ref/supremm-group-bys.json
-configuratuon/datawarehouse.d/ref/supremm-statistics.json
+configuration/datawarehouse.d/ref/supremm-group-bys.json
+configuration/datawarehouse.d/ref/supremm-statistics.json
+configuration/etl/etl_tables.d/supremm/supremmfact_by.json
+configuration/etl/etl_tables.d/supremm/supremmfact_by_day.json
+configuration/etl/etl_tables.d/supremm/supremmfact_by_day_joblist.json
+configuration/etl/etl_action_defs.d/supremm/supremmfact_by.json
+configuration/etl/etl_action_defs.d/supremm/supremmfact_by_day.json
+configuration/etl/etl_action_defs.d/supremm/supremmfact_by_day_joblist.json
+configuration/etl/etl_tables.d/supremm/job.json
+configuration/etl/etl_tables.d/supremm/job_errors.json
+configuration/etl/etl_sql.d/supremm/applications.sql
+configuration/etl/etl_sql.d/supremm/postprocess.sql
 
 # ETL resource-specific configuration
 /etl/js/config/supremm/dataset_maps/*
